@@ -53,7 +53,41 @@ R.map(r => [r.n, r.title, r.trim, r.price, r.km, r.dealer].join(';')).join('\n')
 ```
 
 Long tool output gets truncated, so print short rows and fetch URLs for
-the interesting rows by index afterwards.
+the interesting rows by index afterwards. AutoTrader.ca pages with
+`&page=2`, `&page=3` and so on.
+
+### Cross-site comparison
+
+The same car is usually listed on several sites, and each site shows
+something the others do not. Check at least a market-analysis site and an
+online retailer alongside the aggregator:
+
+- **CarGurus.ca:** a deal rating and "$X below/above market" for each
+  listing, days on market (60+ days means room to negotiate), price-drop
+  history, and a drivetrain decoded from the VIN. Search URL:
+  `https://www.cargurus.ca/search?zip=<postal>&distance=50&entityId=<model id>&startYear=2020&endYear=2022&maxPrice=32000&sortType=DEAL_SCORE&sortDirection=ASC`.
+  Model ids (`d306` RAV4, `d2133` CX-5, `d374` Forester) appear in the
+  `/Cars/l-Used-<Make>-<Model>-<City>-d<id>_L<loc>` URLs a web search
+  returns. Listing pages are `https://www.cargurus.ca/details/<id>`, and
+  the id is in each result card's link. CarGurus does not link history
+  reports.
+- **Online retailers (Clutch.ca, Canada Drives):** fixed prices, a return
+  window, and a CARFAX link on each car. The report opens in a new tab
+  only on a real click, not a scripted `.click()`.
+- **Manufacturer certified programs:** extra warranty. Some sites gate
+  their inventory behind accepting terms; do not accept terms for the
+  buyer. Tell them to search it themselves or ask dealers.
+
+Use the overlap:
+
+- **Find a history report:** if a car on one site has no report link, find
+  the same car on another site by matching km and price, and use that
+  listing's report link.
+- **Check the facts against each other:** trim, drivetrain and price often
+  differ between sites. Trust the VIN-decoded drivetrain over a listing
+  title; in testing, a car titled "AWD" on one site was FWD by its VIN.
+- **Price:** use the market comparison to judge each car's price, not the
+  dealer's "great price" badge.
 
 Compare like with like: the same model across years and trims, plus its
 direct rivals (for a compact SUV: RAV4, CR-V, CX-5, Rogue, Tucson,
