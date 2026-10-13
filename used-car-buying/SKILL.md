@@ -1,0 +1,143 @@
+---
+name: used-car-buying
+description: Research and compare used cars for a buyer - search listings, read every vehicle history report before recommending, check model-year problems and dealer fine print, and write up a comparison. Use when someone shares used-car listings, asks which used car to buy, or asks to find similar cars. Written for Canada (AutoTrader.ca, CARFAX Canada, OMVIC); adapt the sources elsewhere.
+---
+
+# Used car buying
+
+The goal is a short list of cars that are safe to go and see, with every
+claim linked to its source. Recommending a car is a claim that it is worth
+the buyer's time, so nothing gets recommended before its history report has
+been read.
+
+## 1. Requirements
+
+Get these before searching. Ask only for what the conversation has not
+already answered.
+
+- Budget, and whether they pay cash or finance.
+- Must-haves: AWD or FWD, seats, cargo, and anything that has to fit (a
+  rear-facing infant car seat needs rear legroom; a full-size stroller needs
+  cargo space).
+- Location and how far they will travel to buy.
+- Body type and makes they will or will not consider.
+
+## 2. Search
+
+Search the big aggregator first, in the buyer's browser at their request,
+at a person's pace: a few searches and listings, not a crawl. Respect the
+site's robots.txt. On AutoTrader.ca the search URL takes the
+make, model, region, city and maximum price in the path:
+
+```text
+https://www.autotrader.ca/cars/toyota/rav4/reg_on/cit_toronto/pr_30000?modelyearfrom=2019&modelyearto=2023
+```
+
+With browser automation, screenshots of these pages can time out; read the
+DOM instead. Each result is an `<article>`. This collects a compact table:
+
+```js
+window.R = [...document.querySelectorAll('article')].map((a, n) => {
+  const L = a.innerText.split('\n').map(s => s.trim()).filter(Boolean);
+  const i = L.findIndex(s => /^\d{4} /.test(s));
+  const d = L.findIndex(s => /km from you/.test(s));
+  const link = a.querySelector('a[href*="/offers/"]');
+  return {
+    n, title: L[i], trim: (L[i + 1] || '').slice(0, 30),
+    price: L.find(s => /^\$ ?[\d,]+$/.test(s)),
+    km: L.find(s => / km$/.test(s)), dealer: L[d - 1],
+    url: link ? link.href.split('?')[0] : '',
+  };
+});
+R.map(r => [r.n, r.title, r.trim, r.price, r.km, r.dealer].join(';')).join('\n');
+```
+
+Long tool output gets truncated, so print short rows and fetch URLs for
+the interesting rows by index afterwards.
+
+Compare like with like: the same model across years and trims, plus its
+direct rivals (for a compact SUV: RAV4, CR-V, CX-5, Rogue, Tucson,
+Sportage, Corolla Cross).
+
+## 3. History report: before anything is recommended
+
+For every candidate on the short list:
+
+1. Find the report link on the listing (labelled "View report" on
+   AutoTrader.ca). Many dealers attach a free one.
+1. Have the buyer open it, or save or paste it, and read it from there. Do
+   not fetch history-report sites on your own: their robots.txt and terms
+   bar automated access. Reading a report the buyer has open in their own
+   browser session, at their request, is fine. If the buyer bought a report
+   themselves, read their saved copy.
+1. Read the summary (VIN, last odometer, accident records yes or no,
+   registration branding, service record count) and the full
+   Accident/Damage section.
+1. If no report is linked, say so and tell the buyer to ask the dealer for
+   one. Do not treat "Verified CarFax" or "no accident" in a listing as
+   evidence; one listing in testing said "no accident" over a
+   police-reported collision.
+
+A car whose report has not been read can appear in the write-up, marked
+"history not checked", but it is never the recommendation.
+
+Rule a car out when the report shows:
+
+- A branded title: rebuilt, salvage, non-repairable, flood.
+- Structural, undercarriage, frame or airbag damage, or a rollover or
+  off-road incident.
+- A single claim large relative to the car's value (roughly over 25%), or
+  more than one claim.
+
+Treat as acceptable but disclose: one minor, police-reported incident with
+no or a small claim amount (a rear bump, a sideswipe).
+
+Also note from the report:
+
+- Registration history: provinces and states, US history, imports. Cars
+  from snowbelt regions need a rust check.
+- Service history: regular dealer servicing is a good sign; gaps are not.
+- Odometer readings that do not line up with the listing.
+
+## 4. Model and car checks
+
+- Known problems for that model and year: search owner complaints and
+  recalls, and name the specific issue (a transmission, a fuel pump, a
+  software fix). First model years are usually the worst.
+- Open recalls by VIN (Transport Canada in Canada, NHTSA in the US).
+- Factory warranty left: basic and powertrain terms count from the
+  original in-service date. Manufacturer-certified programs often extend
+  powertrain coverage; dealer "certification" in Ontario is only a safety
+  inspection.
+- Drivetrain and trim: listings contradict themselves (FWD in one field,
+  AWD in the title). Flag every contradiction for the buyer to confirm.
+
+## 5. Dealer fine print
+
+- Cash price vs finance price. A lower "finance price" only pays off if
+  the loan can be paid off early without a penalty or a clawback of the
+  discount. Explain the trade-off; do not give personalised financial
+  advice.
+- Fees on top of the price: certification, admin, registration, and
+  add-ons bundled into financing.
+- Ontario: a car not certified is sold "as is" under OMVIC rules and may
+  not be road-worthy.
+- Stock photos, "prices may change", and one key only.
+
+## 6. Recommend
+
+Pick one, say why in two or three lines, and give the runner-up. Then list
+what the buyer must do in person:
+
+1. Independent pre-purchase inspection at a mechanic they choose.
+1. Test drive, including the conditions where the model's known problem
+   shows (stop-and-go traffic for a jerky transmission).
+1. Test-fit anything that must fit (car seat base, stroller).
+1. Get an itemised, out-the-door price in writing.
+
+## 7. Write it up
+
+Record the comparison where the buyer keeps their notes: a table per round
+of research with price, km, drivetrain, history verdict and a link for each
+car, plus the date it was checked. Listings disappear and prices change, so
+the date matters.
