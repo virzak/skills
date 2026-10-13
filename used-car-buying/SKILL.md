@@ -104,16 +104,28 @@ For every candidate on the short list:
    bar automated access. Reading a report the buyer has open in their own
    browser session, at their request, is fine. If the buyer bought a report
    themselves, read their saved copy.
+1. Dealer report links often open in a new window the agent cannot see.
+   When the buyer asks you to read the report, take the link's `href`
+   (CARFAX Canada: `https://vhr.carfax.ca/?id=...`) and open it in the
+   tab you control instead of clicking. The page builds the report after
+   it loads, so wait a few seconds before reading it.
 1. Read the summary (VIN, last odometer, accident records yes or no,
    registration branding, service record count) and the full
    Accident/Damage section.
 1. If no report is linked, say so and tell the buyer to ask the dealer for
-   one. Do not treat "Verified CarFax" or "no accident" in a listing as
+   one. Dealer pages show CARFAX badges ("Accident Free", "One Owner").
+   A CARFAX logo with no "Accident Free" badge, when the dealer's other
+   cars have one, means the report has accident records: say so up front.
+   In testing, such a car had four police-reported accidents. Do not treat "Verified CarFax" or "no accident" in a listing as
    evidence; one listing in testing said "no accident" over a
    police-reported collision.
 
 A car whose report has not been read can appear in the write-up, marked
-"history not checked", but it is never the recommendation.
+"history not checked", but it is never the recommendation, the runner-up,
+or any other ranked choice. Before you name a shortlist, read the report
+for every car on it; if you cannot, leave the car off and say whose report
+is missing. A car that is cheap for its trim and has sat unsold for months
+usually has a reason, and the report is where it shows.
 
 Rule a car out when the report shows:
 
@@ -122,6 +134,7 @@ Rule a car out when the report shows:
   off-road incident.
 - A single claim large relative to the car's value (roughly over 25%), or
   more than one claim.
+- More than one accident, even when the claim amounts are not available.
 
 Treat as acceptable but disclose: one minor, police-reported incident with
 no or a small claim amount (a rear bump, a sideswipe).
@@ -175,3 +188,9 @@ Record the comparison where the buyer keeps their notes: a table per round
 of research with price, km, drivetrain, history verdict and a link for each
 car, plus the date it was checked. Listings disappear and prices change, so
 the date matters.
+
+Keep a short "current frontrunners" list at the top, with links, holding
+only cars whose report has been read. When a frontrunner is sold or ruled
+out, update the list and say why. Prefer the dealer's own listing page for
+links: aggregator detail pages can stop loading while the car is still for
+sale.
