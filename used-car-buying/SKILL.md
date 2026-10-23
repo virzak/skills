@@ -176,7 +176,17 @@ Also note from the report:
 Pick one, say why in two or three lines, and give the runner-up. Then list
 what the buyer must do in person:
 
-1. Independent pre-purchase inspection at a mechanic they choose.
+1. Independent pre-purchase inspection at a mechanic they choose. Ask
+   for a paint-thickness check of every panel: a repainted panel with no
+   record on the report means damage that was never reported. In
+   testing, a car with a clean CARFAX had its whole left side repainted.
+   Ask the dealer why, and for the invoice; in Ontario, dealers must
+   disclose damage with repair costs over $3,000.
+1. Tire age, not just tread: read the four-digit DOT date code (week and
+   year) on each tire. Tires older than about six years need replacing,
+   and tires older than the car mean cheap or old-stock replacements.
+1. Brakes: machined (resurfaced) rotors and worn pads are a cost to
+   negotiate.
 1. Test drive, including the conditions where the model's known problem
    shows (stop-and-go traffic for a jerky transmission).
 1. Test-fit anything that must fit (car seat base, stroller).
