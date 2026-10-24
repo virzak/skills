@@ -192,7 +192,34 @@ what the buyer must do in person:
 1. Test-fit anything that must fit (car seat base, stroller).
 1. Get an itemised, out-the-door price in writing.
 
-## 7. Write it up
+## 7. Deposit and the signed agreement
+
+A deposit is where the buyer loses leverage. In testing, the agreement
+said only "deal pending mechanical inspection", the form printed the
+deposit as non-refundable, and when the inspection found a repainted
+side the dealer offered "go ahead or lose the deposit".
+
+1. Do the checks the buyer can do on the lot before paying anything:
+   tire date codes, panel gaps and paint colour in daylight, the report
+   read in full.
+1. Make the inspection condition say what happens, on the signed
+   agreement itself, not only in an email: "deposit fully refunded if
+   the buyer is not satisfied with the inspection". A condition with no
+   stated outcome is an argument, not a right.
+1. Put any date in the condition only if the dealer controls when the
+   car reaches the mechanic, or leave it out.
+1. Cross out "non-refundable" on the form and have both sides initial
+   it, and check whether the "as is" box is signed.
+1. Pay the deposit by credit card: a chargeback is a fallback if the
+   dealer will not refund.
+
+If the dealer refuses to refund after a failed inspection, the path in
+Ontario is the dealer's sales manager or general manager in writing,
+then an OMVIC complaint (mediation; OMVIC cannot order a refund), then
+Small Claims Court, which decides contract disputes. Get the mechanic's
+findings in writing first; that is the evidence each step asks for.
+
+## 8. Write it up
 
 Record the comparison where the buyer keeps their notes: a table per round
 of research with price, km, drivetrain, history verdict and a link for each
